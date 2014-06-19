@@ -1,0 +1,74 @@
+Name: gobject-introspection
+Summary: Introspection system for GObject-based libraries
+Version: 1.32.0
+Release: 1
+Group: Development/Libraries
+License: GPLv2+, LGPLv2+, MIT
+URL: http://live.gnome.org/GObjectIntrospection
+Sources:
+    - "%{name}-%{version}.tar.xz"
+Patches:
+    - 0001-gir-gio-2.0.c-fix-wrong-naming.patch
+SetupOptions: -q -n %{name}-%{version}/upstream
+Description: |
+    GObject Introspection can scan C header and source files in order to
+    generate introspection "typelib" files.  It also provides an API to examine
+    typelib files, useful for creating language bindings among other
+    things.
+PkgConfigBR:
+    - libffi
+#    - gl
+    - libxml-2.0
+    - xfixes
+    - fontconfig
+    - xft
+    - freetype2
+    - glib-2.0
+    - cairo
+#    - x11
+    - python-2.7
+    - gtk-doc
+PkgBR:
+    - gettext
+    - intltool
+    - flex
+    - bison
+    - chrpath
+NoAutoLocale: yes
+
+Configure: configure
+ConfigOptions:
+    - --disable-gtk-doc
+
+Files:
+    - "%doc COPYING"
+    - "%{_libdir}/lib*.so.*"
+    - "%dir %{_libdir}/girepository-1.0"
+    - "%{_libdir}/girepository-1.0/*.typelib"
+
+SubPackages:
+    - Name: python-giscanner
+      AsWholeName: yes
+      Summary: Python package for handling GObject introspection data
+      Group: Development/Languages
+      Description: |
+         This package contains a Python package for handling the introspection
+         data from Python.
+      Files:
+          - "%{_libdir}/gobject-introspection/giscanner"
+    - Name: devel
+      Summary: Libraries and headers for gobject-introspection
+      Group: Development/Libraries
+      Requires:
+        - python-giscanner
+      Description: |
+        Libraries and headers for gobject-introspection.
+      Files:
+          - "%{_libdir}/lib*.so"
+          - "%{_libdir}/pkgconfig/*"
+          - "%{_includedir}/*"
+          - "%{_bindir}/g-ir-*"
+          - "%{_datadir}/gir-1.0"
+          - "%{_datadir}/aclocal/introspection.m4"
+          - "%{_datadir}/gobject-introspection-1.0"
+          - "%doc %{_mandir}/man1/*.gz"
