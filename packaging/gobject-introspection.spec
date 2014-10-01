@@ -9,14 +9,13 @@ Name:       gobject-introspection
 # << macros
 
 Summary:    Introspection system for GObject-based libraries
-Version:    1.32.0
+Version:    1.38.0
 Release:    1
 Group:      Development/Libraries
 License:    GPLv2+, LGPLv2+, MIT
 URL:        http://live.gnome.org/GObjectIntrospection
 Source0:    %{name}-%{version}.tar.xz
 Source100:  gobject-introspection.yaml
-Patch0:     0001-gir-gio-2.0.c-fix-wrong-naming.patch
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(libffi)
@@ -65,8 +64,6 @@ Libraries and headers for gobject-introspection.
 %prep
 %setup -q -n %{name}-%{version}
 
-# 0001-gir-gio-2.0.c-fix-wrong-naming.patch
-%patch0 -p1
 # >> setup
 # << setup
 
