@@ -63,7 +63,7 @@ Libraries and headers for gobject-introspection.
 
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
+%setup -q -n %{name}-%{version}
 
 # 0001-gir-gio-2.0.c-fix-wrong-naming.patch
 %patch0 -p1

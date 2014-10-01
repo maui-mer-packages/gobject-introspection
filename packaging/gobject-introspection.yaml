@@ -9,7 +9,7 @@ Sources:
     - "%{name}-%{version}.tar.xz"
 Patches:
     - 0001-gir-gio-2.0.c-fix-wrong-naming.patch
-SetupOptions: -q -n %{name}-%{version}/upstream
+SetupOptions: -q -n %{name}-%{version}
 Description: |
     GObject Introspection can scan C header and source files in order to
     generate introspection "typelib" files.  It also provides an API to examine
